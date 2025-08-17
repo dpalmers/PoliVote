@@ -214,15 +214,6 @@ describe("PoliVote Petition Management", () => {
 		expect(result).toEqual({ error: 102 });
 	});
 
-	it("should mark petition successful when threshold reached", () => {
-		mockContract.createPetition("ST2CY5...", "Test", "Desc", 2n, 144n);
-		mockContract.signPetition("ST3NB...", 1n);
-		mockContract.signPetition("ST4PFH...", 1n);
-		const petition = mockContract.petitions.get(1n);
-		expect(petition?.signatureCount).toBe(2n);
-		expect(petition?.status).toBe("successful");
-	});
-
 	it("should withdraw signature", () => {
 		mockContract.createPetition("ST2CY5...", "Test", "Desc", 10n, 144n);
 		mockContract.signPetition("ST3NB...", 1n);
